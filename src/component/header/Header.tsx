@@ -35,6 +35,9 @@ export default function Header() {
               <Link className="link" to={"/About"}>
                 About
               </Link>
+              <Link className="link" to={"/ "}>
+                Home
+              </Link>
             </nav>
           </div>
         </div>

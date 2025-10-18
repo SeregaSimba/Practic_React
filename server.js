@@ -1,18 +1,24 @@
-// Подключаем Express
-import express from "express";
+import express, { json } from "express";
+import cors from "cors";
 
-// Создаём приложение
 const app = express();
+app.use(cors());
+app.use(json());
 
-// Порт
-const PORT = 2754;
+const users = []; // тут будут храниться данные от клиентов
 
-// Маршрут для главной страницы
-app.get("/", (req, res) => {
-  res.send("Sergei");
+app.post("/register", (req, res) => {
+  const { name, age, pass } = req.body;
+  users.push({ name, age, pass }); // сохраняем данные
+  res.json({
+    message: "Пользователь зарегистрирован",
+    data: { name, age, pass },
+  });
 });
 
-// Запускаем сервер
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на http://localhost:${PORT}`);
+app.get("/users", (req, res) => {
+  res.json(users); // возвращаем всех пользователей
 });
+
+const PORT = 3001;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
