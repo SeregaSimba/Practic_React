@@ -75,6 +75,12 @@ export default function Registration() {
     }
   }
 
+  async function getUsers() {
+    const response = await fetch("http://localhost:3001/users");
+    const data = await response.json();
+    console.log(data);
+  }
+
   return (
     <>
       <article className="container-registration">
@@ -115,6 +121,7 @@ export default function Registration() {
                   Submit
                 </button>
               </form>
+              <button onClick={getUsers}></button>
             </div>
           </div>
         </div>

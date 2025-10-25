@@ -7,7 +7,7 @@ export default function TuDu() {
 
   function getValTuDu(e: any) {
     const res = e.target.value;
-    setValueTuDu((pre) => res);
+    setValueTuDu(res);
   }
 
   function submitTuDu(e: any) {
